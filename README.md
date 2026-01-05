@@ -31,13 +31,25 @@ The paper contributes a functional prototype, a design pattern for objective hea
 
 ## Repository Contents
 
-This repository is organized to contain all materials necessary to reproduce and understand the user study.
+This repository is organized to contain all materials necessary to reproduce and understand the user study:
+
+### Questionnaires
+- [Entry Questionnaire](questionnaires/entry_questionnaire.tex) – Collects demographic and technology background information prior to the study.
+- [Post-Condition Questionnaire](questionnaires/post_condition_questionnaire.tex) – Measures perceived understanding, actionability, engagement, trust, and social presence after each condition.
+- [Exit Questionnaire](questionnaires/exit_questionnaire.tex) – Comparative preferences and semi-structured interview prompts for the conversational agent vs. dashboard interface.
+
+### Additional Materials (Coming Soon)
+- Prompts
+- Scripts for statistics extraction
+- Scripts for personas
+- Persona descriptions
+- User study setup details
 
 ## TODOs
 
 - [ ] prompts
 - [ ] scripts for statistics extraction
 - [ ] scripts for personas
-- [ ] questionnaires
+- [x] questionnaires
 - [ ] persona descriptions
 - [ ] user study setup details

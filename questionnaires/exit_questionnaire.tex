@@ -1,0 +1,113 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{array}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textit{Exit Questionnaire}}
+\cfoot{\thepage}
+
+\title{\textbf{Exit Questionnaire}}
+\author{}
+\date{}
+
+% centered fixed-width column for small checkbox columns
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\CheckboxCols}{C{2.6cm} C{2.6cm}}
+\newcommand{\checkbox}{\(\square\)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Instructions}
+
+Evaluate the Dashboard and Conversational Agent interfaces by answering the questions below. Fields marked with \textcolor{red}{*} are required.
+
+\vspace{0.4cm}
+
+% ===========================================================
+\section*{Part 1: Comparative Preferences}
+
+Please choose the interface you prefer for each item (tick one column per row): \textcolor{red}{*}
+
+\vspace{0.2cm}
+\renewcommand{\arraystretch}{1.5}
+\noindent
+\begin{tabularx}{\textwidth}{X c c}
+
+    % === HEADER ===
+     & \textbf{Dashboard} & \textbf{Conv. Agent} \\\hline\hline
+
+    % === QUESTIONS ===
+    \textbf{Understanding:} Which condition made it easier to identify the reasons behind the health patterns (e.g., the cause of fatigue)? & \checkbox & \checkbox \\ \hline
+    
+    \textbf{Actionability:} Which condition helped you feel more confident in proposing specific next steps? & \checkbox & \checkbox \\ \hline
+    
+    \textbf{Engagement:} Which condition felt more like a "partnership" rather than just using a tool? & \checkbox & \checkbox \\ \hline
+    
+   \textbf{Effort:}Which condition required more mental concentration to interpret the charts? & \checkbox & \checkbox \\ \hline
+    
+    \textbf{Future Use:} If you were reflecting on your own real wearable data, which interface would you prefer to use first? & \checkbox & \checkbox
+\end{tabularx}
+
+
+\vspace{0.6cm}
+
+% ===============================================
+\section*{Part 2: Semi-Structured Exit Interview}
+\vspace{-0.25cm}(Please provide detailed responses)
+
+\vspace{1cm}
+\noindent\textbf{Verbal Grounding:} The agent used phrases like 'last Wednesday' or 'weekend rebound' instead of absolute dates. How did that affect how you looked at the charts compared to when you were looking at the dashboard alone? \textcolor{red}{*}\\[4pt]
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+
+\clearpage
+\vspace{0.5cm}
+
+\noindent\textbf{Interpretation:} Was there a specific moment where the agent pointed out a pattern (like a correlation between steps and sleep) that you hadn't noticed by yourself? \textcolor{red}{*}\\[4pt]
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\vspace{0.4cm}
+
+\noindent\textbf{Embodiment:} Did the presence of the 3D avatar make the data feel more 'personal' or more like a 'task'? \textcolor{red}{*}\\[6pt]
+\noindent\begin{tabularx}{\textwidth}{X *{3}{C{5cm}}}
+    \centering
+    \checkbox & \checkbox & \checkbox \\
+    \centering
+    More 'personal' & More like a 'task' & Neutral / No difference \\
+\end{tabularx}
+
+\vspace{0.8cm}
+\noindent\textbf{Please elaborate on your response to the previous question (Embodiment):} \textcolor{red}{*}\\[4pt]
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\vspace{0.4cm}
+
+\noindent\textbf{Trust:} Did you ever feel the need to 'double-check' the agent's math against the charts? Why or why not? \textcolor{red}{*}\\[4pt]
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\vspace{1cm}
+
+% =========================
+\section*{Part 3: Feedback}
+
+\noindent\textbf{Is there anything else you wanted to mention?}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\vspace{0.6cm}
+
+\centering
+\noindent\textit{Thank you for completing this questionnaire!}
+
+\end{document}

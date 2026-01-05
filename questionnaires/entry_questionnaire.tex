@@ -1,0 +1,77 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textit{Entry Questionnaire}}
+\cfoot{\thepage}
+
+\title{\textbf{Entry Questionnaire}}
+\author{}
+\date{}
+
+\newcommand{\checkbox}{\(\square\)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Instructions}
+
+Please provide your information and answer the following questions regarding your prior technology use and comfort with data interpretation. Fields marked with \textcolor{red}{*} are required.
+
+\vspace{0.5cm}
+
+\section*{Personal Information}
+
+\noindent\textbf{Your Name} \textcolor{red}{*}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\vspace{0.3cm}
+
+\section*{Technology Background}
+
+\noindent\textbf{Q1: How often have you used wearable devices or health tracking applications in the past?} \textcolor{red}{*}\\[0.2cm]
+\begin{enumerate}[label=\checkbox, itemsep=0.3cm]
+    \item Never
+    \item Occasionally
+    \item Regularly
+\end{enumerate}
+
+\vspace{1cm}
+\noindent\textbf{Q2: If 'occasionally' or 'regularly,' please briefly describe the devices and applications you have used.}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\noindent\makebox[\textwidth]{\hrulefill}\\
+\vspace{0.3cm}
+
+\section*{Data Literacy}
+
+\noindent\textbf{Q3: How comfortable do you feel interpreting charts and graphs?} \textcolor{red}{*}\\[0.2cm]
+\noindent Please rate your comfort level on the following scale:\\[0.2cm]
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccc@{}}
+    \checkbox & \checkbox & \checkbox & \checkbox & \checkbox & \checkbox & \checkbox \\
+    1         & 2         & 3         & 4         & 5         & 6         & 7 \\
+    Not comfortable at all & & & & & & Very comfortable \\
+\end{tabular*}
+
+\vspace{1cm}
+
+\section*{AI Experience}
+
+\noindent\textbf{Q4: How often have you used conversational AI (e.g., ChatGPT, voice assistants) before?} \textcolor{red}{*}\\[0.2cm]
+\begin{enumerate}[label=\checkbox, itemsep=0.3cm]
+    \item Never
+    \item Sometimes
+    \item Often
+\end{enumerate}
+
+\vspace{1cm}
+
+\centering
+\noindent\textit{Thank you for completing this questionnaire!}
+
+\end{document}
