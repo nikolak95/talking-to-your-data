@@ -38,11 +38,15 @@ This repository is organized to contain all materials necessary to reproduce and
 - [Post-Condition Questionnaire](questionnaires/post_condition_questionnaire.tex) – Measures perceived understanding, actionability, engagement, trust, and social presence after each condition.
 - [Exit Questionnaire](questionnaires/exit_questionnaire.tex) – Comparative preferences and semi-structured interview prompts for the conversational agent vs. dashboard interface.
 
+### Personas
+- [Persona A](personas/persona_A.md) – sedentary / sleep-deprived profile with goals about daytime tiredness and small realistic changes to improve activity and sleep.
+- [Persona B](personas/persona_B.md) – active / stressed student profile with goals about soreness/recovery and routine/training adjustments.
+
+
 ### Additional Materials (Coming Soon)
 - Prompts
 - Scripts for statistics extraction
 - Scripts for personas
-- Persona descriptions
 - User study setup details
 
 ## TODOs
@@ -51,5 +55,5 @@ This repository is organized to contain all materials necessary to reproduce and
 - [ ] scripts for statistics extraction
 - [ ] scripts for personas
 - [x] questionnaires
-- [ ] persona descriptions
+- [x] persona descriptions
 - [ ] user study setup details
