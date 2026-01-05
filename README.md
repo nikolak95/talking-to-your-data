@@ -1,3 +1,38 @@
+# Talking to Your Data: User Study Repository
+
+## System Overview
+
+![System Overview](figures/system_overview.pdf)
+
+## About This Research
+
+This repository contains the user study materials for the paper:
+
+**"Talking to Your Data: Exploring Embodied Conversation as an Interface for Personal Health Reflection"**
+
+### Authors
+<i><b>Nikola Kovacevic<sup>1,&#42;</sup>, Bastien Husler<sup>1</sup>, Di Zhuang<sup>1</sup>, Rafael Wampfler<sup>1,&#42;</sup>, and Barbara Solenthaler<sup>1,&#42;</sup></b></i>
+
+<sup>1</sup>Department of Computer Science, ETH Zurich, Zurich, Switzerland
+
+<sup>*</sup>Corresponding authors
+
+### Abstract
+
+Personal health data from wearables are typically presented through dashboards of charts and summary statistics, requiring users to actively interpret patterns and implications. We explore an alternative interaction paradigm: engaging with personal health data through an embodied conversational agent that facilitates objective data reflection in dialogue with the user.
+
+We present a system that combines lightweight preprocessing of wearable data with a Unity-based embodied character. The system follows a dual-agent design: an Observer agent extracts descriptive statistics and temporal trends, while a Presenter agent communicates findings through "spoken statistics," refraining from clinical advice to isolate the impact of the interaction modality.
+
+Our evaluation through a simulated-self user study (N=5) uses a within-subject design. Participants adopted health personas and goals from the LifeSnaps dataset to compare traditional dashboard exploration with embodied conversational reflection, focusing on perceived understanding, specificity of generated actions, and the cognitive shift from passive viewing to active sensemaking.
+
+The paper contributes a functional prototype, a design pattern for objective health data narrative generation, and early empirical insights into how embodiment affects the interpretation of personal health metrics.
+
+---
+
+## Repository Contents
+
+This repository is organized to contain all materials necessary to reproduce and understand the user study.
+
 ## TODOs
 
 - [ ] prompts
