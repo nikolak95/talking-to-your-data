@@ -2,7 +2,7 @@
 
 ## System Overview
 
-![System Overview](figures/system_overview.pdf)
+![System Overview](figures/system_overview.png)
 
 ## About This Research
 
