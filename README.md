@@ -33,14 +33,21 @@ The paper contributes a functional prototype, a design pattern for objective hea
 
 This repository is organized to contain all materials necessary to reproduce and understand the user study:
 
+
 ### Questionnaires
 - [Entry Questionnaire](questionnaires/entry_questionnaire.tex) – Collects demographic and technology background information prior to the study.
 - [Post-Condition Questionnaire](questionnaires/post_condition_questionnaire.tex) – Measures perceived understanding, actionability, engagement, trust, and social presence after each condition.
 - [Exit Questionnaire](questionnaires/exit_questionnaire.tex) – Comparative preferences and semi-structured interview prompts for the conversational agent vs. dashboard interface.
 
+
 ### Personas
 - [Persona A](personas/persona_A.md) – sedentary / sleep-deprived profile with goals about daytime tiredness and small realistic changes to improve activity and sleep.
 - [Persona B](personas/persona_B.md) – active / stressed student profile with goals about soreness/recovery and routine/training adjustments.
+
+
+### Prompts
+- [Observer Prompt](prompts/observer_prompt.txt) – System prompt for the Observer agent that analyzes raw step and sleep data to extract personalized health insights with confidence scores.
+- [Presenter Prompt](prompts/presenter_prompt.txt) – System prompt for the Presenter agent (Vincent) that communicates insights conversationally, grounded in data and focused on user reflection.
 
 
 ### Additional Materials (Coming Soon)
@@ -49,9 +56,10 @@ This repository is organized to contain all materials necessary to reproduce and
 - Scripts for personas
 - User study setup details
 
+
 ## TODOs
 
-- [ ] prompts
+- [x] prompts
 - [ ] scripts for statistics extraction
 - [ ] scripts for personas
 - [x] questionnaires
