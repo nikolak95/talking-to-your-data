@@ -1,0 +1,77 @@
+{
+  "persona": "B",
+  "id": "621e375b67b776a240290cdc",
+  "start_date": "2021-07-01",
+  "days": [
+    {
+      "date": "Thursday, 2021-07-01",
+      "steps": 9851.0,
+      "sleep_hours": 7.683333333333334
+    },
+    {
+      "date": "Friday, 2021-07-02",
+      "steps": 15567.0,
+      "sleep_hours": 6.166666666666667
+    },
+    {
+      "date": "Saturday, 2021-07-03",
+      "steps": 16820.0,
+      "sleep_hours": 6.783333333333333
+    },
+    {
+      "date": "Sunday, 2021-07-04",
+      "steps": 15233.0,
+      "sleep_hours": 7.033333333333333
+    },
+    {
+      "date": "Monday, 2021-07-05",
+      "steps": 5940.0,
+      "sleep_hours": 6.066666666666666
+    },
+    {
+      "date": "Tuesday, 2021-07-06",
+      "steps": 7688.0,
+      "sleep_hours": 7.05
+    },
+    {
+      "date": "Wednesday, 2021-07-07",
+      "steps": 16632.0,
+      "sleep_hours": 7.066666666666666
+    },
+    {
+      "date": "Thursday, 2021-07-08",
+      "steps": 11911.0,
+      "sleep_hours": 5.616666666666666
+    },
+    {
+      "date": "Friday, 2021-07-09",
+      "steps": 5101.0,
+      "sleep_hours": 2.9833333333333334
+    },
+    {
+      "date": "Saturday, 2021-07-10",
+      "steps": 7163.0,
+      "sleep_hours": 9.25
+    },
+    {
+      "date": "Sunday, 2021-07-11",
+      "steps": 6548.0,
+      "sleep_hours": 1.45
+    },
+    {
+      "date": "Monday, 2021-07-12",
+      "steps": 19129.0,
+      "sleep_hours": 6.75
+    },
+    {
+      "date": "Tuesday, 2021-07-13",
+      "steps": 7436.0,
+      "sleep_hours": 7.016666666666667
+    },
+    {
+      "date": "Wednesday, 2021-07-14",
+      "steps": 10063.0,
+      "sleep_hours": 7.266666666666667
+    }
+  ]
+}

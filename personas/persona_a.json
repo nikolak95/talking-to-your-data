@@ -1,0 +1,77 @@
+{
+  "persona": "A",
+  "id": "621e2f9167b776a240011ccb",
+  "start_date": "2022-01-07",
+  "days": [
+    {
+      "date": "Friday, 2022-01-07",
+      "steps": 2634.0,
+      "sleep_hours": 6.45
+    },
+    {
+      "date": "Saturday, 2022-01-08",
+      "steps": 5893.0,
+      "sleep_hours": 7.233333333333333
+    },
+    {
+      "date": "Sunday, 2022-01-09",
+      "steps": 4286.0,
+      "sleep_hours": 7.1
+    },
+    {
+      "date": "Monday, 2022-01-10",
+      "steps": 5528.0,
+      "sleep_hours": 5.316666666666666
+    },
+    {
+      "date": "Tuesday, 2022-01-11",
+      "steps": 4005.0,
+      "sleep_hours": 5.566666666666666
+    },
+    {
+      "date": "Wednesday, 2022-01-12",
+      "steps": 7974.0,
+      "sleep_hours": 5.65
+    },
+    {
+      "date": "Thursday, 2022-01-13",
+      "steps": 8703.0,
+      "sleep_hours": 2.716666666666667
+    },
+    {
+      "date": "Friday, 2022-01-14",
+      "steps": 5832.0,
+      "sleep_hours": 6.666666666666667
+    },
+    {
+      "date": "Saturday, 2022-01-15",
+      "steps": 7123.0,
+      "sleep_hours": 8.383333333333333
+    },
+    {
+      "date": "Sunday, 2022-01-16",
+      "steps": 3120.0,
+      "sleep_hours": 6.016666666666667
+    },
+    {
+      "date": "Monday, 2022-01-17",
+      "steps": 7876.0,
+      "sleep_hours": 5.116666666666666
+    },
+    {
+      "date": "Tuesday, 2022-01-18",
+      "steps": 4958.0,
+      "sleep_hours": 6.116666666666666
+    },
+    {
+      "date": "Wednesday, 2022-01-19",
+      "steps": 3800.0,
+      "sleep_hours": 2.2333333333333334
+    },
+    {
+      "date": "Thursday, 2022-01-20",
+      "steps": null,
+      "sleep_hours": null
+    }
+  ]
+}
