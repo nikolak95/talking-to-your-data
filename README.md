@@ -50,10 +50,12 @@ This repository is organized to contain all materials necessary to reproduce and
 - [Presenter Prompt](prompts/presenter_prompt.txt) – System prompt for the Presenter agent (Vincent) that communicates insights conversationally, grounded in data and focused on user reflection.
 
 
+### Scripts
+Analysis and processing tools for the user study. See [scripts/README.md](scripts/README.md) for detailed documentation on the persona extraction pipeline and supporting utilities.
+
+
 ### Additional Materials (Coming Soon)
-- Prompts
 - Scripts for statistics extraction
-- Scripts for personas
 - User study setup details
 
 
@@ -61,7 +63,7 @@ This repository is organized to contain all materials necessary to reproduce and
 
 - [x] prompts
 - [ ] scripts for statistics extraction
-- [ ] scripts for personas
+- [x] scripts for personas
 - [x] questionnaires
 - [x] persona descriptions
 - [ ] user study setup details
