@@ -56,15 +56,20 @@ Processing pipelines for the user study. See [src/README.md](src/README.md) for 
 - **Statistics & Insights Generation** – Tools to compute correlations, trends, and weekday patterns from persona data, and generate filled observer prompts for LLM-based insight generation.
 
 
-### Additional Materials (Coming Soon)
-- User study setup details
+### Study Setup
+
+![Study Setup](figures/study_setup.jpeg)
+
+The user study employs a two-screen setup:
+- **Left monitor** – Displays the persona description and health goals, along with a dashboard showing step count and sleep data visualizations.
+- **Right monitor** – Shows the Unity-based embodied conversational agent (Vincent) that participants interact with during the conversational condition.
+- **MacBook** – Used for questionnaire administration, kept separate from the main interaction screens.
 
 
-## TODOs
+## Citation
 
-- [x] Prompts
-- [x] Scripts for statistics extraction
-- [x] Scripts for personas
-- [x] Questionnaires
-- [x] Persona descriptions
-- [ ] User study setup details
+If you use this pipeline in your research, please cite:
+
+```
+[TBD]
+```

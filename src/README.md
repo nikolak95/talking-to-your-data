@@ -22,7 +22,7 @@ Pipeline for extracting 14-day data windows from the [LifeSnaps dataset](https:/
 
 **Directory:** `statistics_and_insights_generation/`
 
-Tools to compute descriptive statistics from persona data and generate filled observer prompts for LLM-based insight generation. See the [detailed README](statistics_and_insights_generation/README_STATISTICS.md) for full documentation.
+Tools to compute descriptive statistics from persona data and generate filled observer prompts for LLM-based insight generation. See the [detailed README](statistics_and_insights_generation/README.md) for full documentation.
 
 **Key files:**
 - `statistics.py` – Core statistical calculations (correlations, trends, weekday patterns)
