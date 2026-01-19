@@ -47,8 +47,9 @@ Output as JSON array:
 
 
 ** Additional Data **
-User Health Profile:
-{PERSONA_DESCRIPTION}
+User Profile:
+Age: {USER_AGE}
+Gender: {USER_GENDER}
 
 Raw Data:
 {RAW_HEALTH_DATA}

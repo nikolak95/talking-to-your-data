@@ -50,20 +50,21 @@ This repository is organized to contain all materials necessary to reproduce and
 - [Presenter Prompt](prompts/presenter_prompt.txt) – System prompt for the Presenter agent (Vincent) that communicates insights conversationally, grounded in data and focused on user reflection.
 
 
-### Scripts
-Analysis and processing tools for the user study. See [scripts/README.md](scripts/README.md) for detailed documentation on the persona extraction pipeline and supporting utilities.
+### Source Code
+Processing pipelines for the user study. See [src/README.md](src/README.md) for documentation.
+- **Persona Extraction** – Pipeline for extracting 14-day windows from the LifeSnaps dataset based on activity and sleep criteria.
+- **Statistics & Insights Generation** – Tools to compute correlations, trends, and weekday patterns from persona data, and generate filled observer prompts for LLM-based insight generation.
 
 
 ### Additional Materials (Coming Soon)
-- Scripts for statistics extraction
 - User study setup details
 
 
 ## TODOs
 
-- [x] prompts
-- [ ] scripts for statistics extraction
-- [x] scripts for personas
-- [x] questionnaires
-- [x] persona descriptions
-- [ ] user study setup details
+- [x] Prompts
+- [x] Scripts for statistics extraction
+- [x] Scripts for personas
+- [x] Questionnaires
+- [x] Persona descriptions
+- [ ] User study setup details
