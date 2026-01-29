@@ -1,0 +1,77 @@
+{
+  "persona": "C",
+  "id": "621e362467b776a2404ad513",
+  "start_date": "2021-06-03",
+  "days": [
+    {
+      "date": "Thursday, 2021-06-03",
+      "steps": 6489.0,
+      "sleep_hours": 1.0833333333333333
+    },
+    {
+      "date": "Friday, 2021-06-04",
+      "steps": 6983.0,
+      "sleep_hours": 5.016666666666667
+    },
+    {
+      "date": "Saturday, 2021-06-05",
+      "steps": 8428.0,
+      "sleep_hours": 6.566666666666666
+    },
+    {
+      "date": "Sunday, 2021-06-06",
+      "steps": 4084.0,
+      "sleep_hours": 7.5
+    },
+    {
+      "date": "Monday, 2021-06-07",
+      "steps": 5251.0,
+      "sleep_hours": 4.983333333333333
+    },
+    {
+      "date": "Tuesday, 2021-06-08",
+      "steps": 2589.0,
+      "sleep_hours": 4.583333333333333
+    },
+    {
+      "date": "Wednesday, 2021-06-09",
+      "steps": 2075.0,
+      "sleep_hours": 7.416666666666667
+    },
+    {
+      "date": "Thursday, 2021-06-10",
+      "steps": 3422.0,
+      "sleep_hours": 6.916666666666667
+    },
+    {
+      "date": "Friday, 2021-06-11",
+      "steps": 4011.0,
+      "sleep_hours": 8.383333333333333
+    },
+    {
+      "date": "Saturday, 2021-06-12",
+      "steps": 12772.0,
+      "sleep_hours": 6.883333333333334
+    },
+    {
+      "date": "Sunday, 2021-06-13",
+      "steps": 6075.0,
+      "sleep_hours": null
+    },
+    {
+      "date": "Monday, 2021-06-14",
+      "steps": 12485.0,
+      "sleep_hours": 4.416666666666667
+    },
+    {
+      "date": "Tuesday, 2021-06-15",
+      "steps": 8464.0,
+      "sleep_hours": 6.533333333333333
+    },
+    {
+      "date": "Wednesday, 2021-06-16",
+      "steps": 9172.0,
+      "sleep_hours": 6.75
+    }
+  ]
+}

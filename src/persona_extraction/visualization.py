@@ -14,24 +14,28 @@ from typing import Optional
 def plot_comparison(
     window_a: pd.DataFrame,
     window_b: pd.DataFrame,
+    window_c: Optional[pd.DataFrame] = None,
     col_date: str = "date",
     col_steps: str = "steps",
     col_sleep: str = "minutesAsleep",
     title_a: str = "Persona A",
     title_b: str = "Persona B",
+    title_c: str = "Persona C",
     output_path: Optional[str] = None
 ) -> None:
     """
-    Create a side-by-side comparison plot of two windows.
+    Create a side-by-side comparison plot of two or three windows.
 
     Args:
         window_a: DataFrame for Persona A
         window_b: DataFrame for Persona B
+        window_c: Optional DataFrame for Persona C
         col_date: Column name for date
         col_steps: Column name for step counts
         col_sleep: Column name for sleep in minutes
         title_a: Title for Persona A subplot
         title_b: Title for Persona B subplot
+        title_c: Title for Persona C subplot
         output_path: Optional path to save figure
     """
     def plot_single(ax, window, title):
@@ -70,9 +74,12 @@ def plot_comparison(
             bbox=dict(boxstyle="round", facecolor="white", alpha=0.8)
         )
 
-    fig, axes = plt.subplots(1, 2, figsize=(16, 5))
+    n_panels = 3 if window_c is not None else 2
+    fig, axes = plt.subplots(1, n_panels, figsize=(8 * n_panels, 5))
     plot_single(axes[0], window_a, title_a)
     plot_single(axes[1], window_b, title_b)
+    if window_c is not None:
+        plot_single(axes[2], window_c, title_c)
     plt.tight_layout()
 
     if output_path:
@@ -97,7 +104,7 @@ def window_to_json(
 
     Args:
         window: DataFrame with health data
-        persona: Persona label (A or B)
+        persona: Persona label (A, B, or C)
         participant_id: Participant identifier
         col_date: Column name for date
         col_steps: Column name for step counts

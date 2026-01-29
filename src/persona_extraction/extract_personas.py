@@ -3,9 +3,10 @@
 LifeSnaps Persona Extraction Pipeline
 
 This script extracts representative 14-day windows from the LifeSnaps dataset
-for two distinct health personas:
+for three distinct health personas:
   - Persona A: Sleep-deprived with weekend recovery pattern
   - Persona B: Active lifestyle with irregular stress-causing routine
+  - Persona C: Active senior with moderate activity, fragmented sleep, slow recovery
 
 The pipeline:
   1. Extracts all viable time windows from the dataset
@@ -139,13 +140,14 @@ def main():
         window_days=args.window_days,
         min_present_days=args.min_days
     )
-    print(f"Found {len(candidates)} viable windows ({len(candidates)//2} unique windows)")
+    print(f"Found {len(candidates)} viable windows ({len(candidates)//3} unique windows)")
 
     # Select top candidates
-    top_a, top_b = select_top_candidates(candidates, top_k=args.top_k)
+    top_a, top_b, top_c = select_top_candidates(candidates, top_k=args.top_k)
 
     print_candidate_summary(top_a, "A", args.top_k)
     print_candidate_summary(top_b, "B", args.top_k)
+    print_candidate_summary(top_c, "C", args.top_k)
 
     # Random selection
     print(f"\n{'='*80}")
@@ -173,6 +175,14 @@ def main():
         if args.top_k > 1:
             print(f"  (Randomly selected from top {args.top_k} candidates)")
 
+        selected_c = select_random_from_viable(top_c, threshold=0.0, seed=args.seed)
+        print(f"\nPersona C Selected:")
+        print(f"  ID:         {selected_c.participant_id}")
+        print(f"  Start Date: {selected_c.start_date.date()}")
+        print(f"  Fit Score:  {selected_c.fit_score:.4f}")
+        if args.top_k > 1:
+            print(f"  (Randomly selected from top {args.top_k} candidates)")
+
     except ValueError as e:
         print(f"\nError: {e}", file=sys.stderr)
         print(f"Try increasing --top-k value", file=sys.stderr)
@@ -197,17 +207,27 @@ def main():
         window_days=args.window_days
     )
 
+    window_c = extract_window_data(
+        df,
+        selected_c.participant_id,
+        selected_c.start_date.strftime("%Y-%m-%d"),
+        window_days=args.window_days
+    )
+
     print(f"✓ Extracted Persona A window: {len(window_a)} days")
     print(f"✓ Extracted Persona B window: {len(window_b)} days")
+    print(f"✓ Extracted Persona C window: {len(window_c)} days")
 
     # Generate JSON files
     print(f"\nGenerating JSON files...")
 
     json_a = window_to_json(window_a, "A", selected_a.participant_id)
     json_b = window_to_json(window_b, "B", selected_b.participant_id)
+    json_c = window_to_json(window_c, "C", selected_c.participant_id)
 
     output_a = args.output_dir / "persona_a.json"
     output_b = args.output_dir / "persona_b.json"
+    output_c = args.output_dir / "persona_c.json"
 
     with open(output_a, "w", encoding="utf-8") as f:
         json.dump(json_a, f, indent=2)
@@ -215,8 +235,12 @@ def main():
     with open(output_b, "w", encoding="utf-8") as f:
         json.dump(json_b, f, indent=2)
 
+    with open(output_c, "w", encoding="utf-8") as f:
+        json.dump(json_c, f, indent=2)
+
     print(f"✓ Saved {output_a}")
     print(f"✓ Saved {output_b}")
+    print(f"✓ Saved {output_c}")
 
     # Generate plot if requested
     if args.plot:
@@ -225,8 +249,10 @@ def main():
         plot_comparison(
             window_a,
             window_b,
+            window_c=window_c,
             title_a=f"Persona A (id={selected_a.participant_id}, score={selected_a.fit_score:.3f})",
             title_b=f"Persona B (id={selected_b.participant_id}, score={selected_b.fit_score:.3f})",
+            title_c=f"Persona C (id={selected_c.participant_id}, score={selected_c.fit_score:.3f})",
             output_path=str(plot_path)
         )
 
@@ -237,6 +263,7 @@ def main():
     print(f"\nOutput files:")
     print(f"  • {output_a}")
     print(f"  • {output_b}")
+    print(f"  • {output_c}")
     if args.plot:
         print(f"  • {plot_path}")
 

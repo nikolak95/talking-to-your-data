@@ -11,10 +11,10 @@ from typing import List, Dict, Tuple
 
 try:
     from .data_validation import prepare_window
-    from .persona_scoring import score_persona_a, score_persona_b
+    from .persona_scoring import score_persona_a, score_persona_b, score_persona_c
 except ImportError:
     from data_validation import prepare_window
-    from persona_scoring import score_persona_a, score_persona_b
+    from persona_scoring import score_persona_a, score_persona_b, score_persona_c
 
 
 class WindowCandidate:
@@ -105,13 +105,17 @@ def extract_candidates(
             score_b = score_persona_b(window_prepared, col_steps, col_sleep, col_rhr)
             candidates.append(WindowCandidate(str(pid), start_date, "B", score_b))
 
+            # Score against Persona C
+            score_c = score_persona_c(window_prepared, col_steps, col_sleep, col_rhr)
+            candidates.append(WindowCandidate(str(pid), start_date, "C", score_c))
+
     return candidates
 
 
 def select_top_candidates(
     candidates: List[WindowCandidate],
     top_k: int = 5
-) -> Tuple[List[WindowCandidate], List[WindowCandidate]]:
+) -> Tuple[List[WindowCandidate], List[WindowCandidate], List[WindowCandidate]]:
     """
     Select top K candidates for each persona.
 
@@ -120,15 +124,17 @@ def select_top_candidates(
         top_k: Number of top candidates to select per persona
 
     Returns:
-        Tuple of (top_persona_a, top_persona_b) candidate lists
+        Tuple of (top_persona_a, top_persona_b, top_persona_c) candidate lists
     """
     persona_a = [c for c in candidates if c.persona == "A"]
     persona_b = [c for c in candidates if c.persona == "B"]
+    persona_c = [c for c in candidates if c.persona == "C"]
 
     persona_a.sort(key=lambda x: x.fit_score, reverse=True)
     persona_b.sort(key=lambda x: x.fit_score, reverse=True)
+    persona_c.sort(key=lambda x: x.fit_score, reverse=True)
 
-    return persona_a[:top_k], persona_b[:top_k]
+    return persona_a[:top_k], persona_b[:top_k], persona_c[:top_k]
 
 
 def select_random_from_viable(

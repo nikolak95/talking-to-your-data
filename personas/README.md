@@ -1,6 +1,6 @@
 # Personas
 
-This directory contains the two health personas used in the user study. Each persona represents a distinct behavioral profile with specific health goals, derived from real data in the [LifeSnaps dataset](https://github.com/Kaist-ICLab/LifeSnaps-Fitbit).
+This directory contains the three health personas used in the user study. Each persona represents a distinct behavioral profile with specific health goals, derived from real data in the [LifeSnaps dataset](https://github.com/Kaist-ICLab/LifeSnaps-Fitbit).
 
 ![Persona Comparison](/figures/persona_comparison.png)
 
@@ -30,6 +30,19 @@ A 24-year-old student with an active lifestyle but irregular schedule due to exa
 - `persona_B.md` – Full persona description
 - `persona_B.pdf` – Printable version for study participants
 - `persona_b.json` – 14 days of step count and sleep data
+
+
+## Persona C: Active Senior / Slow Recovery
+
+A person in their late 60s who stays moderately active through daily walks and light activities. Sleep has become lighter and more fragmented, and recovery from exertion takes longer than it used to.
+
+**Health Goals:**
+- Understand why recovery takes longer after moderately active days
+- Identify small adjustments for more continuous sleep and better rest
+
+**Files:**
+- `persona_C.md` – Full persona description
+- `persona_c.json` – 14 days of step count and sleep data
 
 
 ## Data Format

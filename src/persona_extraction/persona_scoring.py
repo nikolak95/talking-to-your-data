@@ -1,9 +1,10 @@
 """
 Persona fitness scoring functions.
 
-This module defines scoring functions for two distinct health personas:
+This module defines scoring functions for three distinct health personas:
 - Persona A: Sleep-deprived, irregular schedule with weekend recovery
 - Persona B: Active lifestyle with moderate routine irregularity
+- Persona C: Active senior with moderate activity, fragmented sleep, slow recovery
 """
 
 import numpy as np
@@ -100,4 +101,45 @@ def score_persona_b(window: pd.DataFrame, col_steps: str, col_sleep: str, col_rh
         0.25 * step_irregularity_fit +
         0.20 * sleep_irregularity_fit +
         0.15 * rhr_fit
+    )
+
+
+def score_persona_c(window: pd.DataFrame, col_steps: str, col_sleep: str, col_rhr: str) -> float:
+    """
+    Score window fit for Persona C: Active senior with slow recovery.
+
+    Characteristics:
+    - Moderate daily activity (around 7500 steps)
+    - Lighter sleep duration (around 6.0 hours)
+    - Fragmented sleep pattern (moderate sleep CV around 0.30)
+    - Higher resting heart rate indicating slower recovery (around 75 bpm)
+
+    Args:
+        window: DataFrame with daily data (14 days)
+        col_steps: Column name for step counts
+        col_sleep: Column name for sleep in minutes
+        col_rhr: Column name for resting heart rate
+
+    Returns:
+        Fitness score in [0, 1] range
+    """
+    steps = window[col_steps].astype(float)
+    sleep = window[col_sleep].astype(float) / 60.0
+    rhr = window[col_rhr].astype(float)
+
+    mean_steps = steps.mean()
+    mean_sleep = sleep.mean()
+    cv_sleep = sleep.std() / max(mean_sleep, 1e-6)
+    mean_rhr = rhr.mean()
+
+    activity_fit = gaussian(mean_steps, mu=7500, sigma=2500)
+    sleep_fit = gaussian(mean_sleep, mu=6.0, sigma=1.0)
+    sleep_fragmentation_fit = gaussian(cv_sleep, mu=0.30, sigma=0.12)
+    rhr_fit = gaussian(mean_rhr, mu=75, sigma=5)
+
+    return (
+        0.35 * activity_fit +
+        0.25 * sleep_fit +
+        0.20 * sleep_fragmentation_fit +
+        0.20 * rhr_fit
     )
