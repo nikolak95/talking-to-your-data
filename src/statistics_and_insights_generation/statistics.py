@@ -11,6 +11,9 @@ import numpy as np
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 
+# Additional metrics beyond steps and sleep_hours
+EXTRA_METRICS = ["resting_hr", "calories", "active_minutes", "sedentary_minutes", "sleep_efficiency"]
+
 
 def calculate_correlation(df: pd.DataFrame, col1: str, col2: str) -> Optional[float]:
     """
@@ -92,12 +95,25 @@ def identify_trend(
     }
 
 
+def _metric_stats(series: pd.Series) -> Optional[Dict[str, float]]:
+    """Compute avg/std/min/max for a series. Returns None if insufficient data."""
+    valid = series.dropna()
+    if len(valid) == 0:
+        return None
+    return {
+        "avg": float(valid.mean()),
+        "std": float(valid.std()) if len(valid) > 1 else 0.0,
+        "min": float(valid.min()),
+        "max": float(valid.max()),
+    }
+
+
 def calculate_base_stats(df: pd.DataFrame) -> Dict[str, Any]:
     """
     Calculate base statistics from daily data.
 
     Args:
-        df: DataFrame with 'date', 'steps', 'sleep_hours' columns
+        df: DataFrame with 'date', 'steps', 'sleep_hours', and optional extra metric columns
 
     Returns:
         Dict with averages, variance, std, and date range
@@ -149,7 +165,27 @@ def calculate_base_stats(df: pd.DataFrame) -> Dict[str, Any]:
             stats["sleep_min"] = float(sleep.min())
             stats["sleep_max"] = float(sleep.max())
 
+    # Extra metrics
+    for metric in EXTRA_METRICS:
+        if metric in df.columns:
+            ms = _metric_stats(df[metric])
+            if ms is not None:
+                stats[metric] = ms
+
     return stats
+
+
+def _weekday_weekend_avg(weekday_data: pd.DataFrame, weekend_data: pd.DataFrame, col: str) -> Optional[Dict[str, float]]:
+    """Compute weekday/weekend averages and diff for a column."""
+    if col not in weekday_data.columns:
+        return None
+    wd = weekday_data[col].dropna()
+    we = weekend_data[col].dropna()
+    if len(wd) == 0 and len(we) == 0:
+        return None
+    wd_avg = float(wd.mean()) if len(wd) > 0 else 0.0
+    we_avg = float(we.mean()) if len(we) > 0 else 0.0
+    return {"weekday_avg": wd_avg, "weekend_avg": we_avg, "weekend_diff": we_avg - wd_avg}
 
 
 def calculate_weekday_patterns(df: pd.DataFrame) -> Dict[str, Any]:
@@ -157,7 +193,7 @@ def calculate_weekday_patterns(df: pd.DataFrame) -> Dict[str, Any]:
     Calculate weekday vs weekend patterns.
 
     Args:
-        df: DataFrame with 'date', 'steps', 'sleep_hours' columns
+        df: DataFrame with 'date', 'steps', 'sleep_hours', and optional extra metric columns
 
     Returns:
         Dict with weekday/weekend averages and differences
@@ -202,6 +238,12 @@ def calculate_weekday_patterns(df: pd.DataFrame) -> Dict[str, Any]:
 
         patterns["sleep_weekend_diff"] = patterns["weekend_avg_sleep"] - patterns["weekday_avg_sleep"]
 
+    # Extra metrics
+    for metric in EXTRA_METRICS:
+        result = _weekday_weekend_avg(weekday_data, weekend_data, metric)
+        if result is not None:
+            patterns[metric] = result
+
     return patterns
 
 
@@ -237,12 +279,30 @@ def compute_all_statistics(persona_data: Dict[str, Any]) -> Dict[str, Any]:
     # Parse dates for trend analysis
     df['date'] = pd.to_datetime(df['date'])
 
-    # Calculate correlation
-    correlation = calculate_correlation(df, 'steps', 'sleep_hours')
+    # Correlations
+    correlations = {
+        "steps_sleep": calculate_correlation(df, 'steps', 'sleep_hours'),
+    }
+    # Extra correlation pairs
+    extra_corr_pairs = [
+        ("steps", "resting_hr"),
+        ("active_minutes", "sleep_hours"),
+        ("active_minutes", "resting_hr"),
+        ("calories", "steps"),
+        ("sleep_hours", "sleep_efficiency"),
+    ]
+    for col1, col2 in extra_corr_pairs:
+        corr = calculate_correlation(df, col1, col2)
+        if corr is not None:
+            correlations[f"{col1}_{col2}"] = corr
 
-    # Calculate trends
-    steps_trend = identify_trend(df['steps'], df['date']) if 'steps' in df.columns else None
-    sleep_trend = identify_trend(df['sleep_hours'], df['date']) if 'sleep_hours' in df.columns else None
+    # Trends
+    trends = {}
+    all_trend_cols = ["steps", "sleep_hours"] + [m for m in EXTRA_METRICS if m in df.columns]
+    for col in all_trend_cols:
+        if col in df.columns:
+            key = col.replace("_hours", "")  # sleep_hours -> sleep
+            trends[key] = identify_trend(df[col], df['date'])
 
     # Build output
     return {
@@ -254,13 +314,8 @@ def compute_all_statistics(persona_data: Dict[str, Any]) -> Dict[str, Any]:
             "days_count": len(days)
         },
         "base_stats": calculate_base_stats(df),
-        "correlations": {
-            "steps_sleep": correlation
-        },
-        "trends": {
-            "steps": steps_trend,
-            "sleep": sleep_trend
-        },
+        "correlations": correlations,
+        "trends": trends,
         "weekday_patterns": calculate_weekday_patterns(df)
     }
 
@@ -286,25 +341,36 @@ def format_statistics_summary(stats: Dict[str, Any]) -> str:
     lines.append(f"  Steps:  avg={base['avg_steps']:.0f}, std={base['steps_std']:.0f}, range=[{base['steps_min']:.0f}, {base['steps_max']:.0f}]")
     lines.append(f"  Sleep:  avg={base['avg_sleep']:.2f}h, std={base['sleep_std']:.2f}h, range=[{base['sleep_min']:.2f}, {base['sleep_max']:.2f}]")
 
-    # Correlation
-    corr = stats['correlations'].get('steps_sleep')
-    if corr is not None:
-        lines.append(f"\nCorrelation (steps vs sleep): {corr:.3f}")
+    # Extra metric base stats
+    for metric in EXTRA_METRICS:
+        ms = base.get(metric)
+        if ms:
+            unit = "bpm" if metric == "resting_hr" else "kcal" if metric == "calories" else "%" if metric == "sleep_efficiency" else "min"
+            lines.append(f"  {metric}: avg={ms['avg']:.1f}{unit}, std={ms['std']:.1f}, range=[{ms['min']:.1f}, {ms['max']:.1f}]")
+
+    # Correlations
+    corr_items = {k: v for k, v in stats['correlations'].items() if v is not None}
+    if corr_items:
+        lines.append(f"\nCorrelations:")
+        for key, val in corr_items.items():
+            lines.append(f"  {key}: {val:.3f}")
 
     # Trends
     lines.append(f"\nTrends:")
-    if stats['trends'].get('steps'):
-        t = stats['trends']['steps']
-        lines.append(f"  Steps: {t['trend']} (slope={t['slope']:.4f})")
-    if stats['trends'].get('sleep'):
-        t = stats['trends']['sleep']
-        lines.append(f"  Sleep: {t['trend']} (slope={t['slope']:.4f})")
+    for key, t in stats.get('trends', {}).items():
+        if t:
+            lines.append(f"  {key}: {t['trend']} (slope={t['slope']:.4f})")
 
     # Weekday patterns
     wp = stats['weekday_patterns']
     lines.append(f"\nWeekday Patterns:")
     lines.append(f"  Steps:  weekday={wp['weekday_avg_steps']:.0f}, weekend={wp['weekend_avg_steps']:.0f}, diff={wp['steps_weekend_diff']:+.0f}")
     lines.append(f"  Sleep:  weekday={wp['weekday_avg_sleep']:.2f}h, weekend={wp['weekend_avg_sleep']:.2f}h, diff={wp['sleep_weekend_diff']:+.2f}h")
+
+    for metric in EXTRA_METRICS:
+        mp = wp.get(metric)
+        if mp:
+            lines.append(f"  {metric}: weekday={mp['weekday_avg']:.1f}, weekend={mp['weekend_avg']:.1f}, diff={mp['weekend_diff']:+.1f}")
 
     lines.append("=" * 60)
 

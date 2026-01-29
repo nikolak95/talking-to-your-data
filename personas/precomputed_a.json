@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "persona": "A",
+    "id": "621e2f9167b776a240011ccb",
+    "start_date": "2022-01-07",
+    "computed_at": "2026-01-29T14:31:09.527826",
+    "days_count": 14
+  },
+  "base_stats": {
+    "avg_steps": 5517.846153846154,
+    "avg_sleep": 5.735897435897436,
+    "steps_variance": 3807637.3076923075,
+    "sleep_variance": 2.890918803418803,
+    "steps_std": 1951.3168137676432,
+    "sleep_std": 1.7002702148243387,
+    "steps_min": 2634.0,
+    "steps_max": 8703.0,
+    "sleep_min": 2.2333333333333334,
+    "sleep_max": 8.383333333333333,
+    "date_range": {
+      "start": "2022-01-07",
+      "end": "2022-01-20"
+    },
+    "resting_hr": {
+      "avg": 66.76733728555533,
+      "std": 3.417643118539863,
+      "min": 61.55497741699219,
+      "max": 70.96892070770264
+    },
+    "calories": {
+      "avg": 1724.4738461538461,
+      "std": 181.47403880162682,
+      "min": 1260.79,
+      "max": 1914.82
+    },
+    "active_minutes": {
+      "avg": 216.6153846153846,
+      "std": 55.498556229777215,
+      "min": 145.0,
+      "max": 306.0
+    },
+    "sedentary_minutes": {
+      "avg": 793.8461538461538,
+      "std": 77.3949246331719,
+      "min": 679.0,
+      "max": 942.0
+    },
+    "sleep_efficiency": {
+      "avg": 96.46153846153847,
+      "std": 1.6132464481796025,
+      "min": 94.0,
+      "max": 99.0
+    }
+  },
+  "correlations": {
+    "steps_sleep": -0.11407596756695061,
+    "steps_resting_hr": -0.09743753769141908,
+    "active_minutes_sleep_hours": -0.13871192008174177,
+    "active_minutes_resting_hr": 0.15784927990389833,
+    "calories_steps": 0.7292740298672864,
+    "sleep_hours_sleep_efficiency": -0.23996985853592404
+  },
+  "trends": {
+    "steps": {
+      "trend": "decreasing",
+      "slope": -22.507823252690248
+    },
+    "sleep": {
+      "trend": "decreasing",
+      "slope": -0.19549989339134147
+    },
+    "resting_hr": {
+      "trend": "decreasing",
+      "slope": -0.8627150565315589
+    },
+    "calories": {
+      "trend": "decreasing",
+      "slope": -24.742042557008702
+    },
+    "active_minutes": {
+      "trend": "decreasing",
+      "slope": -3.9540558560251866
+    },
+    "sedentary_minutes": {
+      "trend": "increasing",
+      "slope": 4.263874022927326
+    },
+    "sleep_efficiency": {
+      "trend": "increasing",
+      "slope": 0.2582932286179013
+    }
+  },
+  "weekday_patterns": {
+    "weekday_avg_steps": 5701.111111111111,
+    "weekend_avg_steps": 5105.5,
+    "weekday_avg_sleep": 5.092592592592593,
+    "weekend_avg_sleep": 7.183333333333333,
+    "steps_weekend_diff": -595.6111111111113,
+    "sleep_weekend_diff": 2.09074074074074,
+    "resting_hr": {
+      "weekday_avg": 66.54195806715224,
+      "weekend_avg": 67.27444052696228,
+      "weekend_diff": 0.7324824598100435
+    },
+    "calories": {
+      "weekday_avg": 1710.6511111111113,
+      "weekend_avg": 1755.5749999999998,
+      "weekend_diff": 44.92388888888854
+    },
+    "active_minutes": {
+      "weekday_avg": 222.11111111111111,
+      "weekend_avg": 204.25,
+      "weekend_diff": -17.861111111111114
+    },
+    "sedentary_minutes": {
+      "weekday_avg": 823.5555555555555,
+      "weekend_avg": 727.0,
+      "weekend_diff": -96.55555555555554
+    },
+    "sleep_efficiency": {
+      "weekday_avg": 96.88888888888889,
+      "weekend_avg": 95.5,
+      "weekend_diff": -1.3888888888888857
+    }
+  }
+}

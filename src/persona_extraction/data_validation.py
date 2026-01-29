@@ -46,11 +46,24 @@ def clean_numeric_columns(window: pd.DataFrame, col_steps: str, col_sleep: str) 
     """
     window = window.copy()
 
+    # Required columns
     window[col_steps] = pd.to_numeric(window[col_steps], errors="coerce")
     window[col_sleep] = pd.to_numeric(window[col_sleep], errors="coerce")
 
     window.loc[window[col_steps] < 0, col_steps] = np.nan
     window.loc[window[col_sleep] < 0, col_sleep] = np.nan
+
+    # Optional columns — clean if present
+    optional_cols = [
+        "resting_hr", "calories",
+        "lightly_active_minutes", "moderately_active_minutes",
+        "very_active_minutes", "sedentary_minutes",
+        "sleep_efficiency"
+    ]
+    for col in optional_cols:
+        if col in window.columns:
+            window[col] = pd.to_numeric(window[col], errors="coerce")
+            window.loc[window[col] < 0, col] = np.nan
 
     return window
 

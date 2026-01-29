@@ -6,72 +6,142 @@
     {
       "date": "Thursday, 2021-06-03",
       "steps": 6489.0,
-      "sleep_hours": 1.0833333333333333
+      "sleep_hours": 1.0833333333333333,
+      "resting_hr": 73.90910530090332,
+      "calories": 2268.74,
+      "active_minutes": 164.0,
+      "sedentary_minutes": 1211.0,
+      "sleep_efficiency": 100.0
     },
     {
       "date": "Friday, 2021-06-04",
       "steps": 6983.0,
-      "sleep_hours": 5.016666666666667
+      "sleep_hours": 5.016666666666667,
+      "resting_hr": 73.69463539123535,
+      "calories": 2397.07,
+      "active_minutes": 203.0,
+      "sedentary_minutes": 881.0,
+      "sleep_efficiency": 98.0
     },
     {
       "date": "Saturday, 2021-06-05",
       "steps": 8428.0,
-      "sleep_hours": 6.566666666666666
+      "sleep_hours": 6.566666666666666,
+      "resting_hr": 75.20908260345459,
+      "calories": 2432.73,
+      "active_minutes": 218.0,
+      "sedentary_minutes": 693.0,
+      "sleep_efficiency": 95.0
     },
     {
       "date": "Sunday, 2021-06-06",
       "steps": 4084.0,
-      "sleep_hours": 7.5
+      "sleep_hours": 7.5,
+      "resting_hr": 75.48240661621094,
+      "calories": 2113.87,
+      "active_minutes": 150.0,
+      "sedentary_minutes": 695.0,
+      "sleep_efficiency": 98.0
     },
     {
       "date": "Monday, 2021-06-07",
       "steps": 5251.0,
-      "sleep_hours": 4.983333333333333
+      "sleep_hours": 4.983333333333333,
+      "resting_hr": 75.80337238311768,
+      "calories": 2457.61,
+      "active_minutes": 195.0,
+      "sedentary_minutes": 905.0,
+      "sleep_efficiency": 96.0
     },
     {
       "date": "Tuesday, 2021-06-08",
       "steps": 2589.0,
-      "sleep_hours": 4.583333333333333
+      "sleep_hours": 4.583333333333333,
+      "resting_hr": 77.6075267791748,
+      "calories": 1999.91,
+      "active_minutes": 93.0,
+      "sedentary_minutes": 944.0,
+      "sleep_efficiency": 95.0
     },
     {
       "date": "Wednesday, 2021-06-09",
       "steps": 2075.0,
-      "sleep_hours": 7.416666666666667
+      "sleep_hours": 7.416666666666667,
+      "resting_hr": 75.15569591522217,
+      "calories": 2005.26,
+      "active_minutes": 79.0,
+      "sedentary_minutes": 718.0,
+      "sleep_efficiency": 99.0
     },
     {
       "date": "Thursday, 2021-06-10",
       "steps": 3422.0,
-      "sleep_hours": 6.916666666666667
+      "sleep_hours": 6.916666666666667,
+      "resting_hr": 75.0293664932251,
+      "calories": 2192.47,
+      "active_minutes": 116.0,
+      "sedentary_minutes": 825.0,
+      "sleep_efficiency": 98.0
     },
     {
       "date": "Friday, 2021-06-11",
       "steps": 4011.0,
-      "sleep_hours": 8.383333333333333
+      "sleep_hours": 8.383333333333333,
+      "resting_hr": 77.26684379577637,
+      "calories": 2265.86,
+      "active_minutes": 136.0,
+      "sedentary_minutes": 724.0,
+      "sleep_efficiency": 95.0
     },
     {
       "date": "Saturday, 2021-06-12",
       "steps": 12772.0,
-      "sleep_hours": 6.883333333333334
+      "sleep_hours": 6.883333333333334,
+      "resting_hr": 79.14889621734619,
+      "calories": 2814.28,
+      "active_minutes": 273.0,
+      "sedentary_minutes": 498.0,
+      "sleep_efficiency": 97.0
     },
     {
       "date": "Sunday, 2021-06-13",
       "steps": 6075.0,
-      "sleep_hours": null
+      "sleep_hours": null,
+      "resting_hr": 79.36219310760498,
+      "calories": 2317.92,
+      "active_minutes": 171.0,
+      "sedentary_minutes": 1269.0,
+      "sleep_efficiency": null
     },
     {
       "date": "Monday, 2021-06-14",
       "steps": 12485.0,
-      "sleep_hours": 4.416666666666667
+      "sleep_hours": 4.416666666666667,
+      "resting_hr": 78.3138484954834,
+      "calories": 2840.49,
+      "active_minutes": 247.0,
+      "sedentary_minutes": 884.0,
+      "sleep_efficiency": 97.0
     },
     {
       "date": "Tuesday, 2021-06-15",
       "steps": 8464.0,
-      "sleep_hours": 6.533333333333333
+      "sleep_hours": 6.533333333333333,
+      "resting_hr": 77.78181552886963,
+      "calories": 2435.99,
+      "active_minutes": 197.0,
+      "sedentary_minutes": 805.0,
+      "sleep_efficiency": 100.0
     },
     {
       "date": "Wednesday, 2021-06-16",
       "steps": 9172.0,
-      "sleep_hours": 6.75
+      "sleep_hours": 6.75,
+      "resting_hr": 77.4075574874878,
+      "calories": 2493.68,
+      "active_minutes": 176.0,
+      "sedentary_minutes": 805.0,
+      "sleep_efficiency": 98.0
     }
   ]
 }

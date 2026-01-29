@@ -91,6 +91,14 @@ def plot_comparison(
     plt.close()
 
 
+def _safe_float(row: pd.Series, col: str) -> Optional[float]:
+    """Extract a float value from a row, returning None if missing or NaN."""
+    if col not in row.index:
+        return None
+    val = row[col]
+    return float(val) if pd.notna(val) else None
+
+
 def window_to_json(
     window: pd.DataFrame,
     persona: str,
@@ -130,11 +138,26 @@ def window_to_json(
         date_obj = pd.to_datetime(row[col_date])
         date_with_weekday = date_obj.strftime("%A, %Y-%m-%d")
 
-        payload["days"].append({
+        # Compute active_minutes as sum of activity levels
+        lightly = _safe_float(row, "lightly_active_minutes")
+        moderately = _safe_float(row, "moderately_active_minutes")
+        very = _safe_float(row, "very_active_minutes")
+        active_minutes = None
+        if any(v is not None for v in (lightly, moderately, very)):
+            active_minutes = sum(v for v in (lightly, moderately, very) if v is not None)
+
+        day_entry = {
             "date": date_with_weekday,
             "steps": steps_val,
-            "sleep_hours": sleep_hours
-        })
+            "sleep_hours": sleep_hours,
+            "resting_hr": _safe_float(row, "resting_hr"),
+            "calories": _safe_float(row, "calories"),
+            "active_minutes": active_minutes,
+            "sedentary_minutes": _safe_float(row, "sedentary_minutes"),
+            "sleep_efficiency": _safe_float(row, "sleep_efficiency"),
+        }
+
+        payload["days"].append(day_entry)
 
     return payload
 

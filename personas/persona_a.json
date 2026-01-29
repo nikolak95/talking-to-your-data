@@ -6,72 +6,142 @@
     {
       "date": "Friday, 2022-01-07",
       "steps": 2634.0,
-      "sleep_hours": 6.45
+      "sleep_hours": 6.45,
+      "resting_hr": 70.96892070770264,
+      "calories": 1576.66,
+      "active_minutes": 150.0,
+      "sedentary_minutes": 842.0,
+      "sleep_efficiency": 97.0
     },
     {
       "date": "Saturday, 2022-01-08",
       "steps": 5893.0,
-      "sleep_hours": 7.233333333333333
+      "sleep_hours": 7.233333333333333,
+      "resting_hr": 70.4159107208252,
+      "calories": 1753.34,
+      "active_minutes": 226.0,
+      "sedentary_minutes": 693.0,
+      "sleep_efficiency": 95.0
     },
     {
       "date": "Sunday, 2022-01-09",
       "steps": 4286.0,
-      "sleep_hours": 7.1
+      "sleep_hours": 7.1,
+      "resting_hr": 70.17755317687988,
+      "calories": 1853.22,
+      "active_minutes": 204.0,
+      "sedentary_minutes": 731.0,
+      "sleep_efficiency": 94.0
     },
     {
       "date": "Monday, 2022-01-10",
       "steps": 5528.0,
-      "sleep_hours": 5.316666666666666
+      "sleep_hours": 5.316666666666666,
+      "resting_hr": 70.94853115081787,
+      "calories": 1829.66,
+      "active_minutes": 251.0,
+      "sedentary_minutes": 716.0,
+      "sleep_efficiency": 97.0
     },
     {
       "date": "Tuesday, 2022-01-11",
       "steps": 4005.0,
-      "sleep_hours": 5.566666666666666
+      "sleep_hours": 5.566666666666666,
+      "resting_hr": 68.76929759979248,
+      "calories": 1622.5,
+      "active_minutes": 173.0,
+      "sedentary_minutes": 875.0,
+      "sleep_efficiency": 94.0
     },
     {
       "date": "Wednesday, 2022-01-12",
       "steps": 7974.0,
-      "sleep_hours": 5.65
+      "sleep_hours": 5.65,
+      "resting_hr": 68.55042934417725,
+      "calories": 1883.29,
+      "active_minutes": 292.0,
+      "sedentary_minutes": 780.0,
+      "sleep_efficiency": 96.0
     },
     {
       "date": "Thursday, 2022-01-13",
       "steps": 8703.0,
-      "sleep_hours": 2.716666666666667
+      "sleep_hours": 2.716666666666667,
+      "resting_hr": 67.15549659729004,
+      "calories": 1914.82,
+      "active_minutes": 306.0,
+      "sedentary_minutes": 942.0,
+      "sleep_efficiency": 96.0
     },
     {
       "date": "Friday, 2022-01-14",
       "steps": 5832.0,
-      "sleep_hours": 6.666666666666667
+      "sleep_hours": 6.666666666666667,
+      "resting_hr": 65.08983039855957,
+      "calories": 1735.54,
+      "active_minutes": 221.0,
+      "sedentary_minutes": 786.0,
+      "sleep_efficiency": 99.0
     },
     {
       "date": "Saturday, 2022-01-15",
       "steps": 7123.0,
-      "sleep_hours": 8.383333333333333
+      "sleep_hours": 8.383333333333333,
+      "resting_hr": 64.41482639312744,
+      "calories": 1801.25,
+      "active_minutes": 217.0,
+      "sedentary_minutes": 679.0,
+      "sleep_efficiency": 97.0
     },
     {
       "date": "Sunday, 2022-01-16",
       "steps": 3120.0,
-      "sleep_hours": 6.016666666666667
+      "sleep_hours": 6.016666666666667,
+      "resting_hr": 64.0894718170166,
+      "calories": 1614.49,
+      "active_minutes": 170.0,
+      "sedentary_minutes": 805.0,
+      "sleep_efficiency": 96.0
     },
     {
       "date": "Monday, 2022-01-17",
       "steps": 7876.0,
-      "sleep_hours": 5.116666666666666
+      "sleep_hours": 5.116666666666666,
+      "resting_hr": 63.39819431304932,
+      "calories": 1913.3,
+      "active_minutes": 293.0,
+      "sedentary_minutes": 793.0,
+      "sleep_efficiency": 96.0
     },
     {
       "date": "Tuesday, 2022-01-18",
       "steps": 4958.0,
-      "sleep_hours": 6.116666666666666
+      "sleep_hours": 6.116666666666666,
+      "resting_hr": 61.55497741699219,
+      "calories": 1659.3,
+      "active_minutes": 168.0,
+      "sedentary_minutes": 879.0,
+      "sleep_efficiency": 98.0
     },
     {
       "date": "Wednesday, 2022-01-19",
       "steps": 3800.0,
-      "sleep_hours": 2.2333333333333334
+      "sleep_hours": 2.2333333333333334,
+      "resting_hr": 62.44194507598877,
+      "calories": 1260.79,
+      "active_minutes": 145.0,
+      "sedentary_minutes": 799.0,
+      "sleep_efficiency": 99.0
     },
     {
       "date": "Thursday, 2022-01-20",
       "steps": null,
-      "sleep_hours": null
+      "sleep_hours": null,
+      "resting_hr": null,
+      "calories": null,
+      "active_minutes": null,
+      "sedentary_minutes": null,
+      "sleep_efficiency": null
     }
   ]
 }

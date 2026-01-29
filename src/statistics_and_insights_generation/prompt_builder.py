@@ -10,6 +10,8 @@ import pandas as pd
 from pathlib import Path
 from typing import Dict, Any, Optional
 
+from statistics import EXTRA_METRICS
+
 
 def get_prompt_template() -> str:
     """
@@ -47,10 +49,32 @@ def format_raw_health_data(persona_data: Dict[str, Any]) -> str:
         steps = day.get('steps')
         sleep = day.get('sleep_hours')
 
-        steps_str = f"{steps:.0f} steps" if steps is not None else "N/A"
-        sleep_str = f"{sleep:.1f}h sleep" if sleep is not None else "N/A"
+        parts = [
+            f"{steps:.0f} steps" if steps is not None else "steps: N/A",
+            f"{sleep:.1f}h sleep" if sleep is not None else "sleep: N/A",
+        ]
 
-        lines.append(f"  {date_str}: {steps_str}, {sleep_str}")
+        rhr = day.get('resting_hr')
+        if rhr is not None:
+            parts.append(f"RHR {rhr:.0f}bpm")
+
+        cal = day.get('calories')
+        if cal is not None:
+            parts.append(f"{cal:.0f}kcal")
+
+        active = day.get('active_minutes')
+        if active is not None:
+            parts.append(f"{active:.0f}min active")
+
+        sedentary = day.get('sedentary_minutes')
+        if sedentary is not None:
+            parts.append(f"{sedentary:.0f}min sedentary")
+
+        eff = day.get('sleep_efficiency')
+        if eff is not None:
+            parts.append(f"sleep eff {eff:.0f}%")
+
+        lines.append(f"  {date_str}: {', '.join(parts)}")
 
     return "\n".join(lines)
 
@@ -72,6 +96,19 @@ def format_variance_data(statistics: Dict[str, Any]) -> str:
         f"Sleep: std={base.get('sleep_std', 0):.2f}h, range=[{base.get('sleep_min', 0):.2f}h, {base.get('sleep_max', 0):.2f}h]"
     ]
 
+    label_map = {
+        "resting_hr": ("Resting HR", "bpm"),
+        "calories": ("Calories", "kcal"),
+        "active_minutes": ("Active Minutes", "min"),
+        "sedentary_minutes": ("Sedentary Minutes", "min"),
+        "sleep_efficiency": ("Sleep Efficiency", "%"),
+    }
+    for metric in EXTRA_METRICS:
+        ms = base.get(metric)
+        if ms:
+            label, unit = label_map.get(metric, (metric, ""))
+            lines.append(f"{label}: std={ms['std']:.1f}{unit}, range=[{ms['min']:.1f}, {ms['max']:.1f}]")
+
     return "\n".join(lines)
 
 
@@ -88,16 +125,28 @@ def format_trends_data(statistics: Dict[str, Any]) -> str:
     trends = statistics.get('trends', {})
     patterns = statistics.get('weekday_patterns', {})
 
-    steps_trend = trends.get('steps', {})
-    sleep_trend = trends.get('sleep', {})
+    lines = []
 
-    lines = [
-        f"Steps trend: {steps_trend.get('trend', 'unknown')} (slope: {steps_trend.get('slope', 0):.4f})",
-        f"Sleep trend: {sleep_trend.get('trend', 'unknown')} (slope: {sleep_trend.get('slope', 0):.4f})",
-        f"Weekday vs Weekend:",
-        f"  Steps: weekday avg={patterns.get('weekday_avg_steps', 0):.0f}, weekend avg={patterns.get('weekend_avg_steps', 0):.0f}",
-        f"  Sleep: weekday avg={patterns.get('weekday_avg_sleep', 0):.2f}h, weekend avg={patterns.get('weekend_avg_sleep', 0):.2f}h"
-    ]
+    for key, trend_data in trends.items():
+        if trend_data:
+            lines.append(f"{key} trend: {trend_data.get('trend', 'unknown')} (slope: {trend_data.get('slope', 0):.4f})")
+
+    lines.append(f"Weekday vs Weekend:")
+    lines.append(f"  Steps: weekday avg={patterns.get('weekday_avg_steps', 0):.0f}, weekend avg={patterns.get('weekend_avg_steps', 0):.0f}")
+    lines.append(f"  Sleep: weekday avg={patterns.get('weekday_avg_sleep', 0):.2f}h, weekend avg={patterns.get('weekend_avg_sleep', 0):.2f}h")
+
+    label_map = {
+        "resting_hr": "Resting HR",
+        "calories": "Calories",
+        "active_minutes": "Active Minutes",
+        "sedentary_minutes": "Sedentary Minutes",
+        "sleep_efficiency": "Sleep Efficiency",
+    }
+    for metric in EXTRA_METRICS:
+        mp = patterns.get(metric)
+        if mp:
+            label = label_map.get(metric, metric)
+            lines.append(f"  {label}: weekday avg={mp['weekday_avg']:.1f}, weekend avg={mp['weekend_avg']:.1f}")
 
     return "\n".join(lines)
 
@@ -113,12 +162,22 @@ def format_correlations_data(statistics: Dict[str, Any]) -> str:
         Formatted string describing correlations
     """
     corr = statistics.get('correlations', {})
-    steps_sleep_corr = corr.get('steps_sleep')
 
-    if steps_sleep_corr is not None:
-        return f"Steps vs Sleep: {steps_sleep_corr:.3f}"
-    else:
-        return "Steps vs Sleep: insufficient data"
+    lines = []
+    label_map = {
+        "steps_sleep": "Steps vs Sleep",
+        "steps_resting_hr": "Steps vs Resting HR",
+        "active_minutes_sleep_hours": "Active Minutes vs Sleep",
+        "active_minutes_resting_hr": "Active Minutes vs Resting HR",
+        "calories_steps": "Calories vs Steps",
+        "sleep_hours_sleep_efficiency": "Sleep Duration vs Sleep Efficiency",
+    }
+    for key, val in corr.items():
+        if val is not None:
+            label = label_map.get(key, key)
+            lines.append(f"{label}: {val:.3f}")
+
+    return "\n".join(lines) if lines else "Insufficient data for correlations"
 
 
 def build_observer_prompt(
